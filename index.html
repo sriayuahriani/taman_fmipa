@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Campus 360 Tour</title>
+  <!-- Pannellum loads from the CDN; an internet connection is required. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #0f172a; color: #fff; }
+    header { padding: 14px 22px; background: #17243a; }
+    h1 { margin: 0; font-size: 1.35rem; }
+    .intro { margin: 6px 0 0; color: #d3e2f1; font-size: .95rem; }
+    #panorama { width: 100%; height: calc(100vh - 116px); min-height: 380px; }
+    footer { min-height: 46px; padding: 13px 22px; background: #17243a; color: #cbd5e1; font-size: .86rem; }
+    footer span { color: #9bd8f2; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Campus 360 | Interactive Virtual Tour</h1>
+    <p class="intro">Drag to look around. Click arrows to change locations; click info icons for explanations.</p>
+  </header>
+  <main><div id="panorama" aria-label="Interactive 360-degree campus tour"></div></main>
+  <footer>Built with <span>Pannellum</span>, <span>Git</span> and <span>GitHub Pages</span>.</footer>
+
+  <script>
+    pannellum.viewer("panorama", {
+      "default": {
+        "firstScene": "entrance",
+        "sceneFadeDuration": 700,
+        "autoLoad": true,
+        "hfov": 110,
+        "escapeHTML": true
+      },
+      "scenes": {
+        "entrance": {
+          "title": "Campus Entrance",
+          "type": "equirectangular",
+          "panorama": "images/entrance.jpg",
+          "yaw": 0,
+          "hotSpots": [
+            {"pitch": -5, "yaw": 14, "type": "scene", "text": "Go to Classroom", "sceneId": "classroom"},
+            {"pitch": 10, "yaw": -50, "type": "info", "text": "Welcome to our virtual campus tour!"}
+          ]
+        },
+        "classroom": {
+          "title": "Classroom",
+          "type": "equirectangular",
+          "panorama": "images/classroom.jpg",
+          "yaw": 0,
+          "hotSpots": [
+            {"pitch": -6, "yaw": 30, "type": "scene", "text": "Go to Library", "sceneId": "library"},
+            {"pitch": -6, "yaw": -110, "type": "scene", "text": "Back to Entrance", "sceneId": "entrance"},
+            {"pitch": 8, "yaw": 3, "type": "info", "text": "Students learn and work together here."}
+          ]
+        },
+        "library": {
+          "title": "Library",
+          "type": "equirectangular",
+          "panorama": "images/library.jpg",
+          "yaw": 0,
+          "hotSpots": [
+            {"pitch": -7, "yaw": -36, "type": "scene", "text": "Back to Classroom", "sceneId": "classroom"},
+            {"pitch": -7, "yaw": 100, "type": "scene", "text": "Return to Entrance", "sceneId": "entrance"},
+            {"pitch": 9, "yaw": 5, "type": "info", "text": "Study resources and reading spaces."}
+          ]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
