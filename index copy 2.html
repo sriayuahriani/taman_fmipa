@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Campus 360 Tour</title>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
+  <script
+    src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js">
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      color: #fff;
+    }
+
+    header {
+      padding: 14px 22px;
+      background: #17243a;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .intro {
+      margin: 6px 0 0;
+      color: #d3e2f1;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    #panorama {
+      width: 100%;
+      height: calc(100vh - 116px);
+      min-height: 380px;
+    }
+
+    footer {
+      min-height: 46px;
+      padding: 13px 22px;
+      background: #17243a;
+      color: #cbd5e1;
+      font-size: 0.86rem;
+    }
+
+    footer span {
+      color: #9bd8f2;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 12px 15px;
+      }
+
+      h1 {
+        font-size: 1.1rem;
+      }
+
+      .intro {
+        font-size: 0.85rem;
+      }
+
+      #panorama {
+        height: calc(100vh - 130px);
+        min-height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Campus 360 | Interactive Virtual Tour</h1>
+    <p class="intro">
+      Geser panorama untuk melihat sekeliling.
+      Klik tanda panah untuk berpindah lokasi dan ikon informasi
+      untuk membaca penjelasan.
+    </p>
+  </header>
+
+  <main>
+    <div id="panorama"
+      aria-label="Tur virtual kampus 360 derajat"></div>
+  </main>
+
+  <footer>
+    Built with <span>Pannellum</span>,
+    <span>Git</span> and <span>GitHub Pages</span>.
+  </footer>
+
+  <script>
+    pannellum.viewer("panorama", {
+      default: {
+        firstScene: "depan_jurusan_matematika",
+        sceneFadeDuration: 700,
+        autoLoad: true,
+        hfov: 100,
+
+      },
+
+      scenes: {
+        depan_jurusan_matematika: {
+          title: "Depan Jurusan Matematika",
+          type: "equirectangular",
+          panorama: "images/depan_jurusan_matematika.jpeg",
+
+          yaw: 0,
+          pitch: 0,
+
+          hotSpots: [
+            {
+              pitch: -10,
+              yaw: -110,
+              type: "scene",
+              text: "Lanjut ke Jalan Menuju Taman",
+              sceneId: "jalan_menuju_taman",
+              targetYaw: 0,
+              targetPitch: 0
+            },
+            {
+              pitch: 10,
+              yaw: -100,
+              type: "info",
+              text: "Selamat datang di area Jurusan Matematika FMIPA UNM."
+            }
+          ]
+        },
+
+        jalan_menuju_taman: {
+          title: "Jalan Menuju Taman",
+          type: "equirectangular",
+          panorama: "images/jalan_menuju_taman.jpeg",
+
+          yaw: 0,
+          pitch: 0,
+
+          hotSpots: [
+            {
+              pitch: -3,
+              yaw: -100,
+              type: "scene",
+              text: "Masuk ke Tengah Taman",
+              sceneId: "tengah_taman",
+              targetYaw: 0,
+              targetPitch: 0
+            },
+            {
+              pitch: -3,
+              yaw: -230,
+              type: "scene",
+              text: "Kembali ke Depan Jurusan Matematika",
+              sceneId: "depan_jurusan_matematika",
+              targetYaw: 0,
+              targetPitch: 0
+            },
+            {
+              pitch: 8,
+              yaw: -90,
+              type: "info",
+              text: "Jalur menuju area tengah taman."
+            }
+          ]
+        },
+
+        tengah_taman: {
+          title: "Tengah Taman FMIPA",
+          type: "equirectangular",
+          panorama: "images/tengah_taman.jpeg",
+
+          yaw: 0,
+          pitch: 0,
+
+          hotSpots: [
+            {
+              pitch: -2,
+              yaw: -36,
+              type: "scene",
+              text: "Kembali ke Jalan Menuju Taman",
+              sceneId: "jalan_menuju_taman",
+              targetYaw: 0,
+              targetPitch: 0
+            },
+            {
+              pitch: 9,
+              yaw: 5,
+              type: "info",
+              text: "Pusat area hijau dan tempat bersantai di Taman FMIPA."
+            }
+          ]
+        }
+      }
+    });
+  </script>
+</body>
+</html>

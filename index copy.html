@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Campus 360 Tour</title>
+  <!-- Pannellum loads from the CDN; an internet connection is required. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #0f172a; color: #fff; }
+    header { padding: 14px 22px; background: #17243a; }
+    h1 { margin: 0; font-size: 1.35rem; }
+    .intro { margin: 6px 0 0; color: #d3e2f1; font-size: .95rem; }
+    #panorama { width: 100%; height: calc(100vh - 116px); min-height: 380px; }
+    footer { min-height: 46px; padding: 13px 22px; background: #17243a; color: #cbd5e1; font-size: .86rem; }
+    footer span { color: #9bd8f2; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Campus 360 | Interactive Virtual Tour</h1>
+    <p class="intro">Drag to look around. Click arrows to change locations; click info icons for explanations.</p>
+  </header>
+  <main><div id="panorama" aria-label="Interactive 360-degree campus tour"></div></main>
+  <footer>Built with <span>Pannellum</span>, <span>Git</span> and <span>GitHub Pages</span>.</footer>
+
+  <script>
+    pannellum.viewer("panorama", {
+      "default": {
+        "firstScene": "depan_jurusan_matematika",
+        "sceneFadeDuration": 700,
+        "autoLoad": true,
+        "hfov": 110,
+        "escapeHTML": true
+      {
+},
+        "jalan_menuju_taman": {
+          "title": "Jalan Menuju Taman",
+          "type": "equirectangular",
+          "panorama": "images/jalan_menuju_taman.jpeg",
+          "yaw": 0,
+          "hotSpots": [
+            {"pitch": 0, "yaw": 0, "type": "scene", "text": "Masuk ke Tengah Taman", "sceneId": "tengah_taman"},
+            {"pitch": -6, "yaw": -110, "type": "scene", "text": "Kembali ke Depan Jurusan Matematika", "sceneId": "depan_jurusan_matematika"},
+            {"pitch": 8, "yaw": 3, "type": "info", "text": "Koridor atau jalur setapak menuju area tengah taman."}
+          ]
+        },
+        "tengah_taman": {
+          "title": "Tengah Taman FMIPA",
+          "type": "equirectangular",
+          "panorama": "images/tengah_taman.jpeg",
+          "yaw": 0,
+          "hotSpots": [
+            {"pitch": -7, "yaw": -36, "type": "scene", "text": "Kembali ke Jalan Menuju Taman", "sceneId": "jalan_menuju_taman"},
+            {"pitch": 9, "yaw": 5, "type": "info", "text": "Pusat area hijau dan tempat bersantai di Taman FMIPA."}
+          ]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
